@@ -36,7 +36,7 @@
                         <div>
                             <img class="w-[20px]" src="../assets/Union.svg" alt="">
                         </div>
-                        <span class="font-[14px] text-[#5C5C5C]">Профиль</span>
+                        <span class="font-[14px] text-[#5C5C5C]">Авторизоваться</span>
                     </div>
                 </router-link>
             </div>
