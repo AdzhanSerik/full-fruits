@@ -27,20 +27,20 @@ async function getAllProducts() {
     }
 }
 
-async function auth() {
-    try {
-        const response = await axios.post("http://localhost:4000/auth/login", {
+// async function auth() {
+//     try {
+//         const response = await axios.post("http://localhost:4000/auth/login", {
 
-            identifier: "Adzhan",
-            password: "qwerty"
+//             identifier: "Adzhan",
+//             password: "qwerty"
 
-        })
-        console.log(response)
+//         })
+//         console.log(response)
 
-    } catch (error) {
+//     } catch (error) {
 
-    }
-}
+//     }
+// }
 
 async function logout() {
     try {
@@ -60,7 +60,8 @@ async function searchProducts(event) {
 }
 
 onMounted(async () => {
-    await auth()
+    // await auth()
+    // logout()
     fruits.value = await getAllProducts()
     compareFruits.value = fruits.value
     console.log(fruits.value)
