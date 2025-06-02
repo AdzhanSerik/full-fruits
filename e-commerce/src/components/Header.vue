@@ -39,6 +39,12 @@
                         <span class="font-[14px] text-[#5C5C5C]">Авторизоваться</span>
                     </div>
                 </router-link>
+                <div v-else @click="logout" class="flex gap-2 items-center cursor-pointer">
+                    <div>
+                        <img class="w-[20px]" src="../assets/Union.svg" alt="">
+                    </div>
+                    <span class="font-[14px] text-[#5C5C5C]">Выход</span>
+                </div>
             </div>
 
         </div>
@@ -48,13 +54,26 @@
 
 <script setup>
 
+import { useRouter } from 'vue-router'
+const router = useRouter()
+import axios from 'axios'
 
 
-defineProps({
+const props = defineProps({
     toggleCart: Function,
-    authStatus: Boolean
-
+    authStatus: Boolean,
+    changeStatus: Function
 })
+
+async function logout() {
+    try {
+        const response = await axios.post("http://localhost:4000/auth/logout")
+        props.changeStatus(false)
+        router.push('/auth')
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 </script>
 

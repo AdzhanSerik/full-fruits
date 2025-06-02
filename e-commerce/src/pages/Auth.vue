@@ -1,6 +1,7 @@
 <template>
     <div class="h-[70vh] flex items-center justify-center" v-auto-animate>
-        <SignIn :username="username" :password="password" :toggleSignUp="toggleSignUp" v-if="!isSignUp" />
+        <SignIn :changeStatus="changeStatus" :username="username" :password="password" :toggleSignUp="toggleSignUp"
+            v-if="!isSignUp" />
         <SignUp :getUserFromSignUp="getUserFromSignUp" :toggleSignUp="toggleSignUp" v-else />
     </div>
 </template>
@@ -14,6 +15,10 @@ import { ref } from 'vue'
 const isSignUp = ref(false)
 const username = ref('')
 const password = ref('')
+
+defineProps({
+    changeStatus: Function
+})
 
 function getUserFromSignUp(usernameFromSignUp, passwordFromSignUp) {
     username.value = usernameFromSignUp

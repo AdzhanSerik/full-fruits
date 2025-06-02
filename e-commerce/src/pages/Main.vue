@@ -26,34 +26,13 @@ async function getAllProducts() {
         const response = await axios.get("http://localhost:4000/api/fruits")
         return response.data
     } catch (error) {
-        console.log(error.response.status)
+
         props.changeStatus()
         return []
     }
 }
 
-// async function auth() {
-//     try {
-//         const response = await axios.post("http://localhost:4000/auth/login", {
 
-//             identifier: "Adzhan",
-//             password: "qwerty"
-
-//         })
-//         console.log(response)
-
-//     } catch (error) {
-
-//     }
-// }
-
-async function logout() {
-    try {
-        const response = await axios.post("http://localhost:4000/auth/logout")
-    } catch (error) {
-        console.log(error)
-    }
-}
 
 async function searchProducts(event) {
 
@@ -64,8 +43,6 @@ async function searchProducts(event) {
 }
 
 onMounted(async () => {
-    // await auth()
-    // logout()
     fruits.value = await getAllProducts()
     console.log('aaaa: ', fruits.value)
     compareFruits.value = fruits.value

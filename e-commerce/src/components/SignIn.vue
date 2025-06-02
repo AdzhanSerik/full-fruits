@@ -15,10 +15,11 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
     toggleSignUp: Function,
     username: String,
-    password: String
+    password: String,
+    changeStatus: Function
 })
 
 import { ref } from 'vue'
@@ -37,6 +38,7 @@ async function login() {
         })
 
         if (response.status === 200) {
+            props.changeStatus(true)
             router.push('/')
         }
     } catch (error) {
