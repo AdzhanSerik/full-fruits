@@ -31,7 +31,7 @@
                 </router-link>
             </div>
             <div class="flex items-center justify-center">
-                <router-link to="/auth">
+                <router-link v-if="!authStatus" to="/auth">
                     <div class="flex gap-2 items-center">
                         <div>
                             <img class="w-[20px]" src="../assets/Union.svg" alt="">
@@ -51,7 +51,9 @@
 
 
 defineProps({
-    toggleCart: Function
+    toggleCart: Function,
+    authStatus: Boolean
+
 })
 
 </script>

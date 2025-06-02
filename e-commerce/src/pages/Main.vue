@@ -17,12 +17,17 @@ import Search from '../components/Search.vue'
 const fruits = ref([])
 const compareFruits = ref([])
 
+const props = defineProps({
+    changeStatus: Function
+})
+
 async function getAllProducts() {
     try {
         const response = await axios.get("http://localhost:4000/api/fruits")
         return response.data
     } catch (error) {
-        console.log(error)
+        console.log(error.response.status)
+        props.changeStatus()
         return []
     }
 }
@@ -45,7 +50,6 @@ async function getAllProducts() {
 async function logout() {
     try {
         const response = await axios.post("http://localhost:4000/auth/logout")
-        console.log(response)
     } catch (error) {
         console.log(error)
     }
@@ -63,6 +67,7 @@ onMounted(async () => {
     // await auth()
     // logout()
     fruits.value = await getAllProducts()
+    console.log('aaaa: ', fruits.value)
     compareFruits.value = fruits.value
     console.log(fruits.value)
 })
